@@ -1,0 +1,10 @@
+version: '3.8'
+
+
+services:
+  database:
+    image: my-mongo-image
+    ports:
+      - "27017:27017"
+    volumes:
+      - "./DataBase/data/db:/data/db"
