@@ -1,13 +1,2 @@
 FROM mongo:latest
-
-
-ENV MONGO_INITDB_ROOT_USERNAME=admin
-ENV MONGO_INITDB_ROOT_PASSWORD=superadmin
-
-
-VOLUME /data/db
-
-
-EXPOSE 27017
-
 CMD ["mongod"]

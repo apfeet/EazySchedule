@@ -1,10 +1,14 @@
 version: '3.8'
 
-
 services:
   database:
-    image: my-mongo-image
+    build:
+      context: ./DataBase
+      dockerfile: Dockerfile
     ports:
       - "27017:27017"
     volumes:
       - "./DataBase/data/db:/data/db"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
