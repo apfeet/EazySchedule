@@ -1,0 +1,27 @@
+:root {
+  --main-color: rgb(92, 128, 247);
+  --NAVBAR_ITEM_SIZE: 80px;
+}
+body{
+  margin: 0;
+  background-color: var(--main-color);
+}
+.NavBarContainer{
+  border: 1px solid red;
+  height: var(--NAVBAR_ITEM_SIZE);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.NavBarContainer_Logo{
+  border: 1px solid orange;
+  width: var(--NAVBAR_ITEM_SIZE);
+  height: var(--NAVBAR_ITEM_SIZE);
+}
+.NavBarContainer_ContainerCenterItems{
+  border: 1px solid yellow;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
