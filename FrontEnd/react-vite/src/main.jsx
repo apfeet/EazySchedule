@@ -1,17 +1,38 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './style.css'
-import logo from "./assets/ES_logo.png"
-import Button from "./components/Button.jsx"
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './style.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/home';
+import Enterportal from './pages/enterportal';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import CreatePage from './pages/CreatePage';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/EnterPortal',
+    element: <Enterportal />,
+  },
+  {
+    path: '/Register',
+    element: <Register />,
+  },
+  {
+    path: '/Login',
+    element: <Login />,
+  },
+  {
+    path: '/create',
+    element: <CreatePage />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <>
-    {/*NavBar*/}
-    <div className='NavBarContainer'>
-      <img className="NavBarContainer_Logo" src={logo}></img>
-      <div className="NavBarContainer_ContainerCenterItems">
-        <Button />
-      </div>
-    </div>
-  </>
-)
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

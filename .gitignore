@@ -1,3 +1,4 @@
 .env
 
 /DataBase/data
+/Backend/flask_session

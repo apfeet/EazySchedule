@@ -1,6 +1,19 @@
-FROM node:20-alpine
-COPY . .
+FROM node:20
+
+
 WORKDIR /react-vite
-RUN rm -rf node_modules package-lock.json
+
+
+COPY react-vite/package*.json ./
+
+ENV PATH /app/node_modules/.bin:$PATH
+
 RUN npm install
-CMD ["npm", "run", "dev"]
+
+COPY react-vite ./
+
+EXPOSE 5173
+
+RUN chmod +x build.sh
+
+CMD ["./build.sh"]

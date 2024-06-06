@@ -12,9 +12,39 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
       - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+  
   frontend:
     build:
       context: ./FrontEnd
       dockerfile: Dockerfile
+    volumes:
+      - ./FrontEnd/react-vite:/react-vite
+      - /react-vite/node_modules
     ports:
-      - "5173:5173"
+      - 5173:5173
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./BackEnd
+      dockerfile: Dockerfile
+    volumes:
+      - ./BackEnd:/app
+    ports:
+      - "5000:5000"
+      - "9191:9191"
+  
+  nginx:
+    build:
+      context: ./Nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./FrontEnd/react-vite/dist:/usr/share/nginx/html
+    ports:
+      - 8000:80
+    depends_on:
+      - frontend
+      - backend
